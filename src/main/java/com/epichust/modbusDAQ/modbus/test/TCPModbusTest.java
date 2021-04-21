@@ -1,4 +1,4 @@
-package com.epichust.daq.modbus.test;
+package com.epichust.modbusDAQ.modbus.test;
 
 import com.serotonin.modbus4j.ModbusFactory;
 import com.serotonin.modbus4j.ModbusMaster;

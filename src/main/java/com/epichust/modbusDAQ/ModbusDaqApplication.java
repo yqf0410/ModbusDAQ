@@ -1,13 +1,13 @@
-package com.epichust.daq;
+package com.epichust.modbusDAQ;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DaqApplication {
+public class ModbusDaqApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DaqApplication.class, args);
+		SpringApplication.run(ModbusDaqApplication.class, args);
 	}
 
 }

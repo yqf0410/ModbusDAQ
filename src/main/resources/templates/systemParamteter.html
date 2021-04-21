@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
+    <script src="../static/jquery/jquery.js"></script>
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+
+
+<div class="layui-row">
+    <div class="layui-col-xs7">
+
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>Modbus配置</legend>
+        </fieldset>
+
+        <form class="layui-form" action="" lay-filter="params">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">接口类型</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="type" value="com" title="串口" checked="">
+                    <input type="radio" name="type" value="tcp" title="网口">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">IP</label>
+                    <div class="layui-input-inline">
+                        <input type="tel" name="ip" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">端口</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="port" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">站点</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="slaveId" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">串口</label>
+                    <div class="layui-input-inline">
+                        <input type="tel" name="commPortId" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">奇偶校验</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="parity" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">数据位</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="dataBits" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">停止位</label>
+                    <div class="layui-input-inline">
+                        <input type="tel" name="stopBits" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">端口名称</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="portOwnerName" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">波特率</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="baudRate" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend>数据库配置</legend>
+            </fieldset>
+
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">数据库驱动</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="driverClassName" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">连接地址</label>
+                    <div class="layui-input-inline" style="width: 300px">
+                        <input type="text" name="url" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">用户名</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="username" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">密码</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="password" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>表字段映射</legend>
+        </fieldset>
+        <div class="layui-form">
+            <table class="layui-table" id="table" lay-filter="table">
+                <thead>
+                <tr>
+                    <td>序号</td>
+                    <td>表名</td>
+                    <td>字段名</td>
+                    <td>点位</td>
+                    <td>长度</td>
+                    <td>操作</td>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div class="layui-btn-container" style="margin-left: 10px">
+            <button type="button" class="layui-btn layui-btn-normal" id="addRowBtn">添加字段</button>
+            <button type="button" class="layui-btn layui-btn-normal" id="saveBtn">保存</button>
+        </div>
+    </div>
+</div>
+<script src="../static/layui/layui.js" charset="utf-8"></script>
+<script src="../static/jquery/jquery.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述 JS 路径需要改成你本地的 -->
+<script>
+
+    layui.use(['form', 'layedit', 'table'], function () {
+        var form = layui.form
+            , layer = layui.layer
+            , table = layui.table;
+
+        layer.ready(function () {
+            $.ajax({
+                url: "http://localhost/sp/selectParam",
+                data: {},
+                type: "Post",
+                dataType: "json",
+                success: function (data) {
+                    form.val('params', data);
+                    var arr = JSON.parse(data.dbPlcRel);
+                    for(i=0;i<arr.length;i++){
+                        var tr=" <tr>"+
+                            '<td>1</td>'+
+                            '<td><input type="text" id="layui-input" class="layui-input" name="tn" value="'+arr[i].tn+'"></td>'+
+                            '<td><input type="text" id="layui-input" class="layui-input" name="cn" value="'+arr[i].cn+'"></td>'+
+                            '<td><input type="text" id="layui-input" class="layui-input" name="ps" value="'+arr[i].ps+'"></td>'+
+                            '<td><input type="text" id="layui-input" class="layui-input" name="pl" value="'+arr[i].pl+'"></td>'+
+                            ' <td><a class="layui-btn layui-btn-danger layui-btn-xs del">删除</a></td>'+
+                            " </tr>";
+                        $("#table tbody:last").append(tr);
+                    }
+                    table.render({
+                        elem: '#demo',
+                        data: data.table
+                    });
+                },
+                error: function (data) {
+                    layer.alert(data.msg, {
+                        title: '错误'
+                    })
+                }
+            });
+        });
+
+        //表单取值
+        layui.$('#saveBtn').on('click', function () {
+            var data = form.val('params');
+            var tb=document.getElementById("table");
+            var rows = tb.rows;
+            var arr = [];
+            for (var i = 1; i < rows.length; i++) {    //--循环所有的行
+                var cells = rows[i].cells;　　// cells 集合返回表格中所有 <td> 或 <th> 元素。
+                var map = {};
+                for (var j = 1; j < cells.length; j++) {   //--循环所有的列，从第一列取数据，因为一般第一列都是标识，数据毫无意义。
+                    var name = cells[j].childNodes[0].name;//取有input框的数据
+                    var value = cells[j].childNodes[0].value;//取有input框的数据
+                    map[name] = value;
+                }
+                arr.push(map);
+            }
+            data.dbPlcRel =  JSON.stringify(arr);
+            $.ajax({
+                url: "http://localhost/sp/saveParam",
+                data: {
+                    formData: JSON.stringify(data)
+                },
+                type: "Post",
+                dataType: "json",
+                success: function (data) {
+                    layer.msg(data.data);
+                },
+                error: function (data) {
+                    layer.msg(data.msg);
+                }
+            });
+        });
+
+
+        //表单取值
+        $('#addRowBtn').on('click', function () {
+            var tr=" <tr>"+
+                '<td>1</td>'+
+                '<td><input type="text" id="layui-input" class="layui-input" name="tn"></td>'+
+                '<td><input type="text" id="layui-input" class="layui-input" name="cn"></td>'+
+                '<td><input type="text" id="layui-input" class="layui-input" name="ps"></td>'+
+                '<td><input type="text" id="layui-input" class="layui-input" name="pl"></td>'+
+                ' <td><a class="layui-btn layui-btn-danger layui-btn-xs del">删除</a></td>'+
+                " </tr>";
+            $("#table tbody:last").append(tr);
+        });
+
+
+        $('body').on('click', '.del', function() {
+            //删除当前按钮所在的tr
+            $(this).closest('tr').remove();
+        });
+    });
+
+</script>
+</body>
+</html>
